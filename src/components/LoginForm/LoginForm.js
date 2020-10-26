@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "../../redux/mapStoreToProps";
 
 class LoginForm extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   login = (event) => {
@@ -13,14 +13,14 @@ class LoginForm extends Component {
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: this.state.username,
           password: this.state.password,
         },
       });
     } else {
-      this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      this.props.dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
@@ -47,7 +47,7 @@ class LoginForm extends Component {
               name="username"
               required
               value={this.state.username}
-              onChange={this.handleInputChangeFor('username')}
+              onChange={this.handleInputChangeFor("username")}
             />
           </label>
         </div>
@@ -59,7 +59,7 @@ class LoginForm extends Component {
               name="password"
               required
               value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
+              onChange={this.handleInputChangeFor("password")}
             />
           </label>
         </div>
