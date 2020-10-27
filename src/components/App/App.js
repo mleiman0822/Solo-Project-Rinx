@@ -15,16 +15,18 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
-import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
+import RinkMap from "../RinkMap/RinkMap";
+import FavoriteRinks from "../FavoriteRinks/FavoriteRinks";
 
 import "./App.css";
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: "FETCH_USER" });
+    this.props.dispatch({ type: "FETCH_RINKS" });
   }
 
   render() {
@@ -56,10 +58,17 @@ class App extends Component {
             />
 
             <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
+              // logged in shows UserPage else shows LoginPage
               exact
-              path="/info"
-              component={InfoPage}
+              path="/rinks"
+              component={RinkMap}
+            />
+
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/favorites"
+              component={FavoriteRinks}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
