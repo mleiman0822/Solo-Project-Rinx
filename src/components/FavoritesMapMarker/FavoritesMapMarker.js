@@ -14,9 +14,9 @@ export class MapMarker extends Component {
   showInMapClicked = () => {
     window.open(
       "https://maps.google.com?q=" +
-        this.props.rink.latitude +
+        this.props.favorite.latitude +
         "," +
-        this.props.rink.longitude
+        this.props.favorite.longitude
     );
   };
 
@@ -31,59 +31,59 @@ export class MapMarker extends Component {
   addToFavorites = () => {};
 
   render() {
-    const rink = this.props.rink;
+    const favorite = this.props.favorites;
     return (
       <>
         <Marker
-          key={rink.id}
-          latitude={Number(rink.latitude)}
-          longitude={Number(rink.longitude)}
+          key={favorite.id}
+          latitude={Number(favorite.latitude)}
+          longitude={Number(favorite.longitude)}
         >
           <div className="map-marker">
             <img
               style={{ cursor: "pointer" }}
               onClick={this.handlePopUp}
               src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
-              alt={rink.note}
+              alt={favorite.note}
             />
           </div>
         </Marker>
         {this.state.popUp !== false ? (
           <Popup
             className="popUp"
-            latitude={Number(rink.latitude)}
-            longitude={Number(rink.longitude)}
+            latitude={Number(favorite.latitude)}
+            longitude={Number(favorite.longitude)}
             onClose={this.closePopUp}
             closeButton={true}
             closeOnClick={false}
             offsetTop={-30}
           >
-            <h4>{rink.name}</h4>
-            <h5>{rink.address}</h5>
+            <h4>{favorite.name}</h4>
+            <h5>{favorite.address}</h5>
             <h6
               className={
-                rink.status === 3
+                favorite.status === 3
                   ? "greenStatus"
-                  : rink.status === 2
+                  : favorite.status === 2
                   ? "yellowStatus"
                   : "redStatus"
               }
             >
-              {rink.status}
+              {favorite.status}
             </h6>
 
-            <p>{rink.note}</p>
-            <button
+            <p>{favorite.note}</p>
+            {/*             <button
               onClick={() => {
                 this.setState({ setOpen: true });
                 this.props.dispatch({
-                  type: "ADD_FAVORITE",
-                  payload: rink,
+                  type: "DELETE_FAVORITE",
+                  payload: favorite,
                 });
               }}
             >
               Remove From Favorites
-            </button>
+            </button> */}
             <button onClick={this.showInMapClicked}>Open in Google Maps</button>
           </Popup>
         ) : (

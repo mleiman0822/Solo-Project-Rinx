@@ -11,6 +11,15 @@ function* addFavorite(action) {
   }
 }
 
+function* getFavorite(action) {
+  try {
+    yield axios.get(`/api/favorites`, action.payload);
+    yield put({ type: "GET_FAVORITES", payload: action.payload });
+  } catch (error) {
+    console.log("Error with adding favorite:", error);
+  }
+}
+
 // will be fired on DELETE_FAVORITE
 function* deleteFavorite(action) {
   try {

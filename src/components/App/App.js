@@ -23,6 +23,7 @@ import FavoriteRinks from "../FavoriteRinks/FavoriteRinks";
 import Admin from "../Admin/Admin";
 
 import "./App.css";
+import ChangeUserNamePage from "../ChangeUserNamePage/ChangeUserNamePage";
 
 class App extends Component {
   componentDidMount() {
@@ -108,6 +109,13 @@ class App extends Component {
               path="/home"
               component={LandingPage}
               authRedirect="/user"
+            />
+
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/changeusername"
+              component={ChangeUserNamePage}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

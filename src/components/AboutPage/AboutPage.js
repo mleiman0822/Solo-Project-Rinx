@@ -8,10 +8,7 @@ import React from "react";
 const AboutPage = () => (
   <div className="container">
     <div>
-      <p>
-        This app was created by Matthew, with the the help of classmates and
-        teachers alike.
-      </p>
+      <p></p>
     </div>
   </div>
 );
