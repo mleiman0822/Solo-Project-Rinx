@@ -44,13 +44,14 @@ class Map extends Component {
           // whatever the new map viewport is, after a user zooms or pans
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
-          {this.props.rinks.map((favorite) => (
-            // Offset is required because images are drawn on the map at the top left corner...
-            // but marker pins need to have their bottom 'point' on the location (so they need to
+          {this.props.favorites &&
+            this.props.favorites.map((favorite) => (
+              // Offset is required because images are drawn on the map at the top left corner...
+              // but marker pins need to have their bottom 'point' on the location (so they need to
 
-            // get shifted to the left and up! Depends on the size of the marker)
-            <FavoritesMapMarker favorite={favorite} />
-          ))}
+              // get shifted to the left and up! Depends on the size of the marker)
+              <FavoritesMapMarker favorite={favorite} />
+            ))}
         </ReactMapGL>
       </div>
     );
@@ -59,6 +60,6 @@ class Map extends Component {
 
 const mapStateToProps = (state) => ({
   state: state,
-  rinks: state.rinkItemsReducer.rinks,
+  favorites: state.favoriteReducer,
 });
 export default connect(mapStateToProps)(Map);

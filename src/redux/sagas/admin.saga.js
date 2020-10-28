@@ -41,9 +41,9 @@ function* fetchRink() {
   }
 }
 
-function* mapItemSaga() {
+function* rinkSaga() {
   yield takeLatest("CREATE_RINK", createRink);
   yield takeLatest("FETCH_RINKS", fetchRink);
 }
 
-export default mapItemSaga;
+export default rinkSaga;

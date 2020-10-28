@@ -5,6 +5,7 @@ import userSaga from "./user.saga";
 
 import rinkItemSaga from "./rink.saga";
 import addFavoriteSaga from "./favorites.saga";
+import rinkSaga from "./admin.saga";
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     userSaga(),
     rinkItemSaga(),
     addFavoriteSaga(),
+    rinkSaga(),
   ]);
 }

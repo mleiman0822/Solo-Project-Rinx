@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { connect } from "react-redux";
+import "mapbox-gl/dist/mapbox-gl.css";
 import RinkMap from "../RinkMap/RinkMap";
-import MapMarker from "../MapMarker/MapMarker";
 
 class AdminForm extends Component {
   state = {
@@ -47,8 +48,7 @@ class AdminForm extends Component {
           <p>
             Use <a href="https://www.latlong.net/">LatLong.net</a> to get
             Latitude / Longitude points. After adding the map, the map will
-            auto-update but it will not auto-update to show all pins (thats up
-            to the user)
+            auto-update but it will not auto-update to show all pins.
           </p>
           Name:{" "}
           <input
@@ -80,9 +80,9 @@ class AdminForm extends Component {
             value={this.state.status}
             required
           >
-            <option value={this.state.status}>Useable</option>
-            <option value={this.state.status}>Usable/Needs Maintenance</option>
-            <option value={this.state.status}>Not Usable</option>
+            <option value={3}>Useable</option>
+            <option value={2}>Usable/Needs Maintenance</option>
+            <option value={1}>Not Usable</option>
           </select>
           Indoor or Outdoor?:{" "}
           <input

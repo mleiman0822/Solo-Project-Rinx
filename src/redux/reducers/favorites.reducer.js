@@ -1,8 +1,3 @@
-const defaultState = {
-  currentItem: null,
-  favorites: [],
-};
-
 const favoriteReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_FAVORITES":
@@ -12,5 +7,4 @@ const favoriteReducer = (state = [], action) => {
   }
 };
 
-module.exports = favoriteReducer;
-// export default favoriteReducer;
+export default favoriteReducer;
