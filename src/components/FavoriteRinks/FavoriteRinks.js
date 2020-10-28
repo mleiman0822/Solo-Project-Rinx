@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { connect } from "react-redux";
 import "mapbox-gl/dist/mapbox-gl.css";
-import MapMarker from "../MapMarker/MapMarker";
+import FavoritesMapMarker from "../FavoritesMapMarker/FavoritesMapMarker";
 
 // Grab some nice markers from:
 // https://github.com/pointhi/leaflet-color-markers/tree/master/img
@@ -44,12 +44,12 @@ class Map extends Component {
           // whatever the new map viewport is, after a user zooms or pans
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
-          {this.props.rinks.map((rink) => (
+          {this.props.rinks.map((favorite) => (
             // Offset is required because images are drawn on the map at the top left corner...
             // but marker pins need to have their bottom 'point' on the location (so they need to
 
             // get shifted to the left and up! Depends on the size of the marker)
-            <MapMarker rink={rink} />
+            <FavoritesMapMarker favorite={favorite} />
           ))}
         </ReactMapGL>
       </div>

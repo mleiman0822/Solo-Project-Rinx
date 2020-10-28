@@ -35,20 +35,9 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   }
 
   const favoritedRink = req.body;
-  const user = req.user;
 
-  const queryText = `INSERT INTO "favorites" ("name", "note", "image", "address", "status", "indoor_or_outdoor", "longitude","latitude") VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
-  const queryValue = [
-    user.id,
-    favoritedRink.name,
-    favoritedRink.note,
-    favoritedRink.image,
-    favoritedRink.address,
-    favoritedRink.status,
-    favoritedRink.indoor_or_outdoor,
-    favoritedRink.longitutde,
-    favoritedRink.latitude,
-  ];
+  const queryText = `INSERT INTO "favorites" ("rink_id", "user_id") VALUES ($1, $2)`;
+  const queryValue = [favoritedRink.id, req.user.id];
   pool
     .query(queryText, queryValue)
     .then((result) => {

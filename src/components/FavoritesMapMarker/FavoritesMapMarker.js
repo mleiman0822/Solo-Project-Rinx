@@ -82,7 +82,7 @@ export class MapMarker extends Component {
                 });
               }}
             >
-              Add To Favorites
+              Remove From Favorites
             </button>
             <button onClick={this.showInMapClicked}>Open in Google Maps</button>
           </Popup>
