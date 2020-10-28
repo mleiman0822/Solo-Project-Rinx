@@ -20,6 +20,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import RinkMap from "../RinkMap/RinkMap";
 import FavoriteRinks from "../FavoriteRinks/FavoriteRinks";
+import Admin from "../Admin/Admin";
 
 import "./App.css";
 
@@ -69,6 +70,13 @@ class App extends Component {
               exact
               path="/favorites"
               component={FavoriteRinks}
+            />
+
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/admin"
+              component={Admin}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will

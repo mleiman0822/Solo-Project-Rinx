@@ -26,8 +26,8 @@ app.use(passport.session());
 /* Routes */
 app.use("/api/user", userRouter);
 app.use("/api/rinks", rinkMapRouter);
-/* app.use("/api/favorites", favoriteRouter);
- */
+app.use("/api/favorites", favoriteRouter);
+
 // Serve static files
 app.use(express.static("build"));
 

@@ -1,4 +1,4 @@
-/* const express = require("express");
+const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 const {
@@ -6,10 +6,15 @@ const {
 } = require("../modules/authentication-middleware");
 
 // GET /favorites/id
-router.get("/:id", (req, res) => {
+router.get("/", (req, res) => {
   console.log("GET /favorites/id");
   const userId = req.user.id;
-  const queryText = `SELECT * FROM favorites WHERE (rink_id=$1 AND user_id=$1) ORDER BY name ASC`;
+  const queryText = `SELECT "name", "note","image","address","status","favorited","indoor_or_outdoor","longitude","latitude" FROM "rinks" 
+  JOIN "favorites" ON
+  rinks.id = favorites.rink_id
+  JOIN  "user" ON
+  favorites.user_id = user_id
+  WHERE user_id = $1`;
   const queryValue = [userId];
   pool
     .query(queryText, queryValue)
@@ -25,32 +30,53 @@ router.get("/:id", (req, res) => {
 router.post("/", rejectUnauthenticated, (req, res) => {
   console.log("POST /favorites");
   if (req.isAuthenticated() === false) {
-    res.sendStatus(403); //woah woah woah!!! You are not allowed
+    res.sendStatus(403);
     return;
   }
-  // sample of req.body: {
-  //   name: 'Subway'
-  //   formatted_address: 1234 5th ave,
-  //   rating: 5
-  // }
-  const newRink = req.body;
+
+  const favoritedRink = req.body;
   const user = req.user;
-  //set up a query to the list table to insert the user id, list_type, place name, address, and rating
-  //list_type is 1 because it represents the favorites list
-  const queryText = `INSERT INTO "favorites" ("user_id", "list_type", "name", "address", "rating") VALUES ($1, $2, $3, $4, $5)`;
-  //store the query values
+
+  const queryText = `INSERT INTO "favorites" ("name", "note", "image", "address", "status", "indoor_or_outdoor", "longitude","latitude") VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
   const queryValue = [
- 
- 
+    user.id,
+    favoritedRink.name,
+    favoritedRink.note,
+    favoritedRink.image,
+    favoritedRink.address,
+    favoritedRink.status,
+    favoritedRink.indoor_or_outdoor,
+    favoritedRink.longitutde,
+    favoritedRink.latitude,
   ];
   pool
     .query(queryText, queryValue)
     .then((result) => {
-      res.sendStatus(201); //all done, inserted
+      res.sendStatus(201);
     })
     .catch((error) => {
       console.log(`Error on query to the list table ${error}`);
       res.sendStatus(500);
     });
 });
- */
+// end POST /favorites
+
+router.delete("/favorites/:id", (req, res) => {
+  console.log("DELETE /favorites");
+  const user = req.user;
+  const rink = req.body;
+  const queryText = `DELETE FROM favorites WHERE id = $1`;
+  const queryValue = [user.id, rink.rink_id];
+  pool
+    .query(queryText, queryValue)
+    .then((result) => {
+      console.log("Success in deleting rink.");
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("Error deleting rink", error);
+      res.sendStatus(500);
+    });
+});
+
+module.exports = router;
