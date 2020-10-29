@@ -9,12 +9,10 @@ const {
 router.get("/", (req, res) => {
   console.log("GET /favorites/id");
   const userId = req.user.id;
-  const queryText = `SELECT "name", "note","image","address","status","favorited","indoor_or_outdoor","longitude","latitude" FROM "rinks" 
+  const queryText = `SELECT "favorites"."id","name", "note","image","address","status","favorited","indoor_or_outdoor","longitude","latitude" FROM "rinks" 
   JOIN "favorites" ON
   rinks.id = favorites.rink_id
-  JOIN  "user" ON
-  favorites.user_id = user_id
-  WHERE user_id = $1`;
+  WHERE user_id = $1;`;
   const queryValue = [userId];
   pool
     .query(queryText, queryValue)
@@ -50,21 +48,21 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 });
 // end POST /favorites
 
-router.delete("/favorites/:id", (req, res) => {
-  console.log("DELETE /favorites");
-  const user = req.user;
-  const rink = req.body;
-  const queryText = `DELETE FROM favorites WHERE id = $1`;
-  const queryValue = [user.id, rink.rink_id];
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
+  console.log(req.user, req.params);
+  console.log(
+    `Deleting Rink with ID ${req.params.id} by user ID ${req.user.id} `
+  );
+  let queryText = `DELETE FROM favorites WHERE id = $1;
+  `;
   pool
-    .query(queryText, queryValue)
+    .query(queryText, [req.params.id])
     .then((result) => {
-      console.log("Success in deleting rink.");
-      res.sendStatus(200);
+      res.sendStatus(204);
     })
-    .catch((error) => {
-      console.log("Error deleting rink", error);
-      res.sendStatus(500);
+    .catch((err) => {
+      console.log("Error deleting message", err);
+      res.sendStatus(418);
     });
 });
 

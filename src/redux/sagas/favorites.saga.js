@@ -13,8 +13,8 @@ function* addFavorite(action) {
 
 function* getFavorite(action) {
   try {
-    yield axios.get(`/api/favorites`, action.payload);
-    yield put({ type: "GET_FAVORITES", payload: action.payload });
+    const response = yield axios.get(`/api/favorites`, action.payload);
+    yield put({ type: "SET_FAVORITES", payload: response.data });
   } catch (error) {
     console.log("Error with adding favorite:", error);
   }
@@ -23,7 +23,8 @@ function* getFavorite(action) {
 // will be fired on DELETE_FAVORITE
 function* deleteFavorite(action) {
   try {
-    yield axios.delete(`/:id`, { data: action.payload });
+    yield axios.delete(`/api/favorites/${action.payload}`);
+    yield put({ type: "FETCH_FAVORITES" });
   } catch (error) {
     console.log("Error with deleting favorite:", error);
   }
@@ -32,6 +33,7 @@ function* deleteFavorite(action) {
 function* addFavoriteSaga() {
   yield takeLatest("ADD_FAVORITE", addFavorite);
   yield takeLatest("DELETE_FAVORITE", deleteFavorite);
+  yield takeLatest("FETCH_FAVORITES", getFavorite);
 }
 
 export default addFavoriteSaga;

@@ -40,7 +40,7 @@ export class ChangeUserNamePage extends Component {
     return (
       <div>
         <Grid item className="welcomeSection">
-          <h1 id="welcome">Hey, {this.props.user.username}!</h1>
+          <h1 id="welcome">Greetings, {this.props.user.username}!</h1>
           {/* Conditional rendering here: if showInput is true, then we will
               show the input and the update button!  If not, then we will
               show the Update Username button ONLY.  On click of the

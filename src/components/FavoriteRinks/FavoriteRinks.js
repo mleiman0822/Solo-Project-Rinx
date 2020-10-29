@@ -19,7 +19,20 @@ class Map extends Component {
       selectedRink: null,
       setSelectedRink: null,
       setSelectedMarker: null,
+      favorites: [],
     },
+  };
+
+  componentDidMount() {
+    this.getFavorites();
+  }
+
+  getFavorites = () => {
+    this.setState({ setOpen: true });
+    this.props.dispatch({
+      type: "FETCH_FAVORITES",
+      payload: this.props.favorites,
+    });
   };
 
   setSelectedMarker = (index) => {
@@ -44,7 +57,7 @@ class Map extends Component {
           // whatever the new map viewport is, after a user zooms or pans
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
-          {this.props.favorites &&
+          {this.props.favorites[0] &&
             this.props.favorites.map((favorite) => (
               // Offset is required because images are drawn on the map at the top left corner...
               // but marker pins need to have their bottom 'point' on the location (so they need to

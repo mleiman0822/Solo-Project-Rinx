@@ -29,22 +29,6 @@ router.put("/:id"),
       });
   };
 
-router.delete("/:id", (req, res) => {
-  console.log("DELETE /rink");
-  const user = req.user;
-  const rink = req.body;
-  const queryText = `DELETE FROM rinks WHERE id = $1`;
-  const queryValue = [rink.id];
-  pool
-    .query(queryText, queryValue)
-    .then((result) => {
-      console.log("Success in deleting rink.");
-      res.sendStatus(200);
-    })
-    .catch((error) => {
-      console.log("Error deleting rink", error);
-      res.sendStatus(500);
-    });
-});
+
 
 module.exports = router;

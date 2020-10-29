@@ -7,4 +7,6 @@ const favoriteReducer = (state = [], action) => {
   }
 };
 
+// uploads will be on the redux state at:
+// state.mapRinks
 export default favoriteReducer;

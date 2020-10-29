@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { connect } from "react-redux";
 import "mapbox-gl/dist/mapbox-gl.css";
 import RinkMap from "../RinkMap/RinkMap";
@@ -35,7 +34,7 @@ class AdminForm extends Component {
       address: "",
       status: 1,
       indoor_or_outdoor: "",
-      longitude: 46.877186,
+      latitude: 46.877186,
       longitude: -96.789803,
     });
   };

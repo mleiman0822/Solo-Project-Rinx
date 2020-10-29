@@ -9,6 +9,7 @@ export class MapMarker extends Component {
   state = {
     popUp: false,
     setOpen: false,
+    favorites: [],
   };
 
   showInMapClicked = () => {
@@ -31,7 +32,7 @@ export class MapMarker extends Component {
   addToFavorites = () => {};
 
   render() {
-    const favorite = this.props.favorites;
+    const favorite = this.props.favorite;
     return (
       <>
         <Marker
@@ -73,17 +74,17 @@ export class MapMarker extends Component {
             </h6>
 
             <p>{favorite.note}</p>
-            {/*             <button
+            <button
               onClick={() => {
                 this.setState({ setOpen: true });
                 this.props.dispatch({
                   type: "DELETE_FAVORITE",
-                  payload: favorite,
+                  payload: favorite.id,
                 });
               }}
             >
               Remove From Favorites
-            </button> */}
+            </button>
             <button onClick={this.showInMapClicked}>Open in Google Maps</button>
           </Popup>
         ) : (

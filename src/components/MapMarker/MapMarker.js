@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "./MapMarker.css";
-import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import { connect } from "react-redux";
 
 import "mapbox-gl/dist/mapbox-gl.css";
