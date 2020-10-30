@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "../../redux/mapStoreToProps";
 
-import './LandingPage.css';
+import "./LandingPage.css";
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterForm from "../RegisterForm/RegisterForm";
 
 class LandingPage extends Component {
   state = {
-    heading: 'Class Component',
+    heading: "Welcome To Rinx!",
   };
 
   onLogin = (event) => {
-    this.props.history.push('/login');
+    this.props.history.push("/login");
   };
 
   render() {

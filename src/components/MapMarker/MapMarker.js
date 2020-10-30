@@ -35,6 +35,7 @@ export class MapMarker extends Component {
     return (
       <>
         <Marker
+          className="mapboxgl-marker"
           key={rink.id}
           latitude={Number(rink.latitude)}
           longitude={Number(rink.longitude)}

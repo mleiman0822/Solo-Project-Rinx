@@ -80,7 +80,7 @@ class AdminForm extends Component {
             required
           >
             <option value={3}>Useable</option>
-            <option value={2}>Usable/Needs Maintenance</option>
+            <option value={2}>Useable/Needs Maintenance</option>
             <option value={1}>Not Usable</option>
           </select>
           Indoor or Outdoor?:{" "}

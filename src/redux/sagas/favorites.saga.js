@@ -11,6 +11,7 @@ function* addFavorite(action) {
   }
 }
 
+//getting the favorites from the favorites route 
 function* getFavorite(action) {
   try {
     const response = yield axios.get(`/api/favorites`, action.payload);
