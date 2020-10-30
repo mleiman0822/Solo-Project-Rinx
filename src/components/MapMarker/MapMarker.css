@@ -13,10 +13,6 @@
   color: yellow;
 }
 
-.mapboxgl-marker {
-  display: block;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1;
+.popUp {
+  z-index: 10;
 }

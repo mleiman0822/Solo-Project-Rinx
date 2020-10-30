@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import { connect } from "react-redux";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import MapIcon from "@material-ui/icons/Map";
+import Tooltip from "@material-ui/core/Tooltip";
+import swal from "sweetalert";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -74,18 +79,31 @@ export class MapMarker extends Component {
             </h6>
 
             <p>{favorite.note}</p>
-            <button
-              onClick={() => {
-                this.setState({ setOpen: true });
-                this.props.dispatch({
-                  type: "DELETE_FAVORITE",
-                  payload: favorite.id,
-                });
-              }}
+            <ButtonGroup
+              variant="contained"
+              color="primary"
+              aria-label="contained primary button group"
             >
-              Remove From Favorites
-            </button>
-            <button onClick={this.showInMapClicked}>Open in Google Maps</button>
+              <Button
+                color="secondary"
+                onClick={() => {
+                  this.setState({ setOpen: true });
+                  this.props.dispatch({
+                    type: "DELETE_FAVORITE",
+                    payload: favorite.id,
+                  });
+                }}
+              >
+                <Tooltip title="Remove From Favorites">
+                  <DeleteForeverIcon></DeleteForeverIcon>
+                </Tooltip>
+              </Button>
+              <Button onClick={this.showInMapClicked}>
+                <Tooltip title="Open In Google Maps">
+                  <MapIcon></MapIcon>
+                </Tooltip>
+              </Button>
+            </ButtonGroup>
           </Popup>
         ) : (
           false

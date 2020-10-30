@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "./MapMarker.css";
 import { connect } from "react-redux";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import MapIcon from "@material-ui/icons/Map";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -74,18 +79,31 @@ export class MapMarker extends Component {
             </h6>
 
             <p>{rink.note}</p>
-            <button
-              onClick={() => {
-                this.setState({ setOpen: true });
-                this.props.dispatch({
-                  type: "ADD_FAVORITE",
-                  payload: rink,
-                });
-              }}
+            <ButtonGroup
+              variant="contained"
+              color="primary"
+              aria-label="contained primary button group"
             >
-              Add To Favorites
-            </button>
-            <button onClick={this.showInMapClicked}>Open in Google Maps</button>
+              <Button
+                color="default"
+                onClick={() => {
+                  this.setState({ setOpen: true });
+                  this.props.dispatch({
+                    type: "ADD_FAVORITE",
+                    payload: rink,
+                  });
+                }}
+              >
+                <Tooltip title="Add To Favorites">
+                  <AddCircleIcon></AddCircleIcon>
+                </Tooltip>
+              </Button>
+              <Button onClick={this.showInMapClicked}>
+                <Tooltip title="Open In Google Maps">
+                  <MapIcon></MapIcon>
+                </Tooltip>
+              </Button>
+            </ButtonGroup>
           </Popup>
         ) : (
           false

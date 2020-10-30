@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { connect } from "react-redux";
 import "mapbox-gl/dist/mapbox-gl.css";
 import FavoritesMapMarker from "../FavoritesMapMarker/FavoritesMapMarker";
+import "../RinkMap/RinkMap.css";
 
 // Grab some nice markers from:
 // https://github.com/pointhi/leaflet-color-markers/tree/master/img
@@ -10,8 +11,8 @@ import FavoritesMapMarker from "../FavoritesMapMarker/FavoritesMapMarker";
 class Map extends Component {
   state = {
     viewport: {
-      width: "500px",
-      height: "500px",
+      width: "100%",
+      height: "100%",
       latitude: 46.877186, // Fargo, ND
       longitude: -96.789803,
       zoom: 10,

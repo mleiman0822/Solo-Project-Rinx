@@ -11,8 +11,8 @@ import MapMarker from "../MapMarker/MapMarker";
 class Map extends Component {
   state = {
     viewport: {
-      width: "500px",
-      height: "500px",
+      width: "100%",
+      height: "100%",
       latitude: 46.877186, // Fargo, ND
       longitude: -96.789803,
       zoom: 10,
@@ -37,6 +37,7 @@ class Map extends Component {
     return (
       <div className="map-container">
         <ReactMapGL
+          style={{ borderRadius: "45px" }}
           {...this.state.viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           // mapStyle="mapbox://styles/mapbox/dark-v9"

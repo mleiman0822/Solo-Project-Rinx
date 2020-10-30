@@ -6,12 +6,13 @@ function* addFavorite(action) {
   try {
     yield axios.post(`/api/favorites`, action.payload);
     yield put({ type: "SET_FAVORITES", payload: action.payload });
+    yield put({ type: "FETCH_FAVORITES" });
   } catch (error) {
     console.log("Error with adding favorite:", error);
   }
 }
 
-//getting the favorites from the favorites route 
+//getting the favorites from the favorites route
 function* getFavorite(action) {
   try {
     const response = yield axios.get(`/api/favorites`, action.payload);
