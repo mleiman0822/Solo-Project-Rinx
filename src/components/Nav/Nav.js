@@ -4,48 +4,42 @@ import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+import { Navbar, NavLink } from "react-bootstrap";
+import SportsHockeyIcon from "@material-ui/icons/SportsHockey";
 
 const Nav = (props) => {
   let loginLinkData = {
     path: "/login",
-    text: "Login / Register",
   };
 
-  if (props.store.user.id != null) {
-    loginLinkData.path = "/user";
-    loginLinkData.text = "Home";
-  }
-
   return (
-    <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">RINX </h2>
-      </Link>
+    <div>
+      <Navbar bg="dark" variant="dark" className="navbar-default">
+        <Navbar.Brand href="#home">
+          <SportsHockeyIcon />
+          RINX{" "}
+        </Navbar.Brand>
 
-      <div className="nav-right">
-        <Link className="nav-link" to={loginLinkData.path}>
-          {/* Show this link if they are logged in or not,
-          but call this link 'Home' if they are logged in,
-          and call this link 'Login / Register' if they are not */}
+        <NavLink className="nav-link" href={loginLinkData.path}>
           {loginLinkData.text}
-        </Link>
-        {/* Show the link to the info page and the logout button if the user is logged in */}
-        {props.store.user.id && (
-          <>
-            <Link className="nav-link" to="/rinks">
-              Rinks
-            </Link>
-            <Link className="nav-link" to="favorites">
-              Favorites
-            </Link>
-            <Link className="nav-link" to="/admin">
-              Admin
-            </Link>
-            <LogOutButton className="nav-link" />
-          </>
-        )}
-        {/* Always show this link since the about page is not protected */}
-      </div>
+          {props.store.user.id && (
+            <>
+              {""}
+              {""}
+              <NavLink className="nav-link" href="#rinks">
+                Rinks
+              </NavLink>
+              <NavLink className="nav-link" href="#favorites">
+                Favorites
+              </NavLink>
+              <NavLink className="nav-link" href="#admin">
+                Admin
+              </NavLink>
+            </>
+          )}
+        </NavLink>
+        <LogOutButton className="nav-link-logout" />
+      </Navbar>
     </div>
   );
 };

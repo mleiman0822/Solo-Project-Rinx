@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "../../redux/mapStoreToProps";
+import { Button } from "react-bootstrap";
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterForm from "../RegisterForm/RegisterForm";
 
 class RegisterPage extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   render() {
@@ -17,15 +18,16 @@ class RegisterPage extends Component {
         <RegisterForm />
 
         <center>
-          <button
+          <Button
+            variant="secondary"
             type="button"
             className="btn btn_asLink"
             onClick={() => {
-              this.props.history.push('/login');
+              this.props.history.push("/login");
             }}
           >
             Login
-          </button>
+          </Button>
         </center>
       </div>
     );

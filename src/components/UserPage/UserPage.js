@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
@@ -13,8 +14,10 @@ class UserPage extends Component {
         <p>Your ID is: {this.props.store.user.id}</p>
         <LogOutButton className="log-in" />
         <br />
+        <br />
+
         <Link to="/changeusername">
-          <button>Change Username</button>
+          <Button variant="primary">Change Username</Button>
         </Link>
       </div>
     );

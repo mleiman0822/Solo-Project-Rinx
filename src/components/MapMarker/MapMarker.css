@@ -3,10 +3,7 @@
 }
 
 .redStatus {
-  content: url(https://lh3.googleusercontent.com/proxy/5ipb_BsA8QzREYdsuGMkqnIDrQQtWoWXzYeL65C-nCPSP8hIwQSm_HerRYsBWem9A7mCCI62DCbQEgEajT18KJrjO_711gNA8l5GGFyBtfNGGmOnXljNCkbOvv2b4GdZhyJmm6zQ2zMLMWdPsk4Uk14YBHcWR1Hsg4mJvei5yy3z1eBlTFEoeaRmMYWOkpo);
-  height: 10px;
-  width: auto;
-  margin: auto;
+  color: red;
 }
 
 .yellowStatus {

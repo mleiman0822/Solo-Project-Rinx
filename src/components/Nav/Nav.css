@@ -1,9 +1,9 @@
-.nav-title {
-    font-size: 24px;
-    font-weight: 700;
-    display: inline-block;
-    color: #f2f2f2;
-    padding-left: 10px;
+/* .nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  display: inline-block;
+  color: #f2f2f2;
+  padding-left: 20px;
 }
 
 .nav {
@@ -21,11 +21,9 @@
   text-decoration: none;
   font-size: 15px;
 
-  /* these last two make the logout button in
-  the nav bar look like another link */
-  border:none;
+  border: none;
   cursor: pointer;
-  outline:0;
+  outline: 0;
 }
 
 .nav-link:hover {
@@ -34,4 +32,9 @@
 
 .nav-right {
   float: right;
+}
+ */
+
+.nav-link {
+  display: inline;
 }
