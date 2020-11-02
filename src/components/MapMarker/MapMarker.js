@@ -49,7 +49,7 @@ export class MapMarker extends Component {
             <img
               style={{ cursor: "pointer" }}
               onClick={this.handlePopUp}
-              src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
+              src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"
               alt={rink.note}
             />
           </div>

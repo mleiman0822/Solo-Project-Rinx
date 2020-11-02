@@ -6,7 +6,6 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import MapIcon from "@material-ui/icons/Map";
 import Tooltip from "@material-ui/core/Tooltip";
-import swal from "sweetalert";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -49,7 +48,7 @@ export class MapMarker extends Component {
             <img
               style={{ cursor: "pointer" }}
               onClick={this.handlePopUp}
-              src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
+              src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png"
               alt={favorite.note}
             />
           </div>

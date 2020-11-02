@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+import { Button } from "react-bootstrap";
 
 class LoginForm extends Component {
   state = {
@@ -33,7 +34,9 @@ class LoginForm extends Component {
   render() {
     return (
       <form className="formPanel" onSubmit={this.login}>
+        <h1>Welcome To RINX</h1>
         <h2>Login</h2>
+
         {this.props.store.errors.loginMessage && (
           <h3 className="alert" role="alert">
             {this.props.store.errors.loginMessage}
@@ -64,7 +67,15 @@ class LoginForm extends Component {
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Log In" />
+          <Button
+            variant="secondary"
+            className="btn"
+            type="submit"
+            name="submit"
+            value="Log In"
+          >
+            Login
+          </Button>
         </div>
       </form>
     );

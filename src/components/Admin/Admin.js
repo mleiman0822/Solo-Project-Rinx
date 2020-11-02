@@ -78,9 +78,9 @@ class AdminForm extends Component {
               >
                 <h2>Create New Rink</h2>
                 <p>
-                  Use <a href="https://www.latlong.net/">LatLong.net</a> to get
-                  Latitude / Longitude points. After adding the map, the map
-                  will auto-update but it will not auto-update to show all pins.
+                  You can use <a href="https://www.latlong.net/">LatLong.net</a>{" "}
+                  to get Latitude / Longitude points. After adding a new rink,
+                  the map will auto-update.
                 </p>
                 <Row>
                   <Col>
