@@ -3,11 +3,12 @@
 }
 
 .redStatus {
-  color: red;
+  content: url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png);
+  justify-content: center;
 }
 
 .yellowStatus {
-  color: yellow;
+  content: url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png);
 }
 
 .popUp {

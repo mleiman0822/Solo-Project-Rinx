@@ -39,21 +39,56 @@ export class MapMarker extends Component {
     const rink = this.props.rink;
     return (
       <>
-        <Marker
-          className="mapboxgl-marker"
-          key={rink.id}
-          latitude={Number(rink.latitude)}
-          longitude={Number(rink.longitude)}
-        >
-          <div className="map-marker">
-            <img
-              style={{ cursor: "pointer" }}
-              onClick={this.handlePopUp}
-              src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"
-              alt={rink.note}
-            />
-          </div>
-        </Marker>
+        {rink.status === 3 ? (
+          <Marker
+            className="mapboxgl-marker"
+            key={rink.id}
+            latitude={Number(rink.latitude)}
+            longitude={Number(rink.longitude)}
+          >
+            <div className="map-marker">
+              <img
+                style={{ cursor: "pointer" }}
+                onClick={this.handlePopUp}
+                src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
+                alt={rink.name}
+              />
+            </div>
+          </Marker>
+        ) : rink.status === 2 ? (
+          <Marker
+            className="mapboxgl-marker"
+            key={rink.id}
+            latitude={Number(rink.latitude)}
+            longitude={Number(rink.longitude)}
+          >
+            <div className="map-marker">
+              <img
+                style={{ cursor: "pointer" }}
+                onClick={this.handlePopUp}
+                src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png"
+                alt={rink.name}
+              />
+            </div>
+          </Marker>
+        ) : (
+          <Marker
+            className="mapboxgl-marker"
+            key={rink.id}
+            latitude={Number(rink.latitude)}
+            longitude={Number(rink.longitude)}
+          >
+            <div className="map-marker">
+              <img
+                style={{ cursor: "pointer" }}
+                onClick={this.handlePopUp}
+                src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png"
+                alt={rink.name}
+              />
+            </div>
+          </Marker>
+        )}
+
         {this.state.popUp !== false ? (
           <Popup
             className="popUp"
@@ -79,6 +114,10 @@ export class MapMarker extends Component {
             </h6>
 
             <p>{rink.note}</p>
+            <p>
+              {rink.latitude} {rink.longitude}
+            </p>
+
             <ButtonGroup
               variant="contained"
               color="primary"
@@ -95,7 +134,7 @@ export class MapMarker extends Component {
                 }}
               >
                 <Tooltip title="Add To Favorites">
-                  <AddCircleIcon></AddCircleIcon>
+                  <AddCircleIcon onClick={this.closePopUp}></AddCircleIcon>
                 </Tooltip>
               </Button>
               <Button onClick={this.showInMapClicked}>
