@@ -25,6 +25,7 @@ class AdminForm extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
+    this.closeModal();
 
     // simple dispatch for the saga to take care of
     this.props.dispatch({
@@ -137,13 +138,16 @@ class AdminForm extends Component {
                   </Col>
                   <Col>
                     Indoor or Outdoor?:{" "}
-                    <input
+                    <select
                       onChange={(e) =>
                         this.setState({ indoor_or_outdoor: e.target.value })
                       }
                       value={this.state.indoor_or_outdoor}
                       required
-                    />
+                    >
+                      <option value={"Outdoor"}>Outdoor</option>
+                      <option value={"Indoor"}>Indoor</option>
+                    </select>
                   </Col>
                 </Row>
                 <Row>
@@ -172,11 +176,7 @@ class AdminForm extends Component {
                 <br />
                 <Row>
                   <Col>
-                    <Button
-                      onSubmit={this.closeModal}
-                      type="submit"
-                      variant="primary w-100 text-center"
-                    >
+                    <Button type="submit" variant="primary w-100 text-center">
                       Add Rink To Map
                     </Button>
                   </Col>
