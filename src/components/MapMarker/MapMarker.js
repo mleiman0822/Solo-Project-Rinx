@@ -91,6 +91,7 @@ export class MapMarker extends Component {
 
         {this.state.popUp !== false ? (
           <Popup
+            style={{ borderRadius: "15px" }}
             className="popUp"
             latitude={Number(rink.latitude)}
             longitude={Number(rink.longitude)}

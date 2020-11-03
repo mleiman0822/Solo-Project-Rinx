@@ -1,16 +1,26 @@
 .greenStatus {
-  color: green;
+  content: url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png);
+  margin: 0 auto;
+  display: block;
 }
 
 .redStatus {
-  content: url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png);
-  justify-content: center;
+  content: url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png);
+  margin: 0 auto;
+  display: block;
 }
 
 .yellowStatus {
-  content: url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png);
+  content: url(https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png);
+  margin: 0 auto;
+  display: block;
 }
 
 .popUp {
   z-index: 10;
+}
+
+.statusMarker {
+  text-align: center;
+  background-color: green;
 }
