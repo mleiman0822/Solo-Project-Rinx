@@ -24,3 +24,8 @@
   text-align: center;
   background-color: green;
 }
+
+.rinkImgs {
+  max-width: 70%;
+  height: 150px;
+}

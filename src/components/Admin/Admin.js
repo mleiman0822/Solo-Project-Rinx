@@ -117,7 +117,6 @@ class AdminForm extends Component {
                     <input
                       onChange={(e) => this.setState({ image: e.target.value })}
                       value={this.state.image}
-                      required
                     />
                   </Col>
                 </Row>

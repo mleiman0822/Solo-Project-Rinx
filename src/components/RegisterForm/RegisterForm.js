@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import mapStoreToProps from "../../redux/mapStoreToProps";
+import { Button } from "react-bootstrap";
 
 class RegisterForm extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
     this.props.dispatch({
-      type: 'REGISTER',
+      type: "REGISTER",
       payload: {
         username: this.state.username,
         password: this.state.password,
@@ -28,7 +29,19 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <form className="formPanel" onSubmit={this.registerUser}>
+      <form
+        style={{
+          backgroundColor: "white",
+          borderRadius: "10px",
+          width: "30%",
+          justifyContent: "center",
+          margin: "0 auto",
+          display: "block",
+          opacity: "0.9",
+        }}
+        className="formPanel"
+        onSubmit={this.registerUser}
+      >
         <h2>Register User</h2>
         {this.props.store.errors.registrationMessage && (
           <h3 className="alert" role="alert">
@@ -43,7 +56,7 @@ class RegisterForm extends Component {
               name="username"
               value={this.state.username}
               required
-              onChange={this.handleInputChangeFor('username')}
+              onChange={this.handleInputChangeFor("username")}
             />
           </label>
         </div>
@@ -55,12 +68,22 @@ class RegisterForm extends Component {
               name="password"
               value={this.state.password}
               required
-              onChange={this.handleInputChangeFor('password')}
+              onChange={this.handleInputChangeFor("password")}
             />
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" />
+          <Button
+            variant="primary"
+            className="btn"
+            type="submit"
+            name="submit"
+            value="Register"
+          >
+            Register
+          </Button>
+          <br />
+          <br />
         </div>
       </form>
     );

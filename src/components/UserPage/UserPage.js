@@ -11,7 +11,9 @@ class UserPage extends Component {
     return (
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
-        <p>Your User ID is: {this.props.store.user.id}</p>
+        <p style={{ color: "white" }}>
+          Your User ID is: {this.props.store.user.id}
+        </p>
         <LogOutButton className="log-in" />
         <br />
         <br />

@@ -9,7 +9,8 @@ class LoginPage extends Component {
     return (
       <div>
         <LoginForm />
-
+        <br />
+        <h2 style={{ color: "white" }}>Need an Account?</h2>
         <center>
           <Button
             variant="info"

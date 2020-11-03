@@ -16,8 +16,9 @@ class RegisterPage extends Component {
     return (
       <div>
         <RegisterForm />
-
+        <br />
         <center>
+          <h2 style={{ color: "white" }}>Already a Member? Log in!</h2>
           <Button
             variant="secondary"
             type="button"

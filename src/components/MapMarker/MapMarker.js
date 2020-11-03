@@ -116,6 +116,18 @@ export class MapMarker extends Component {
 
             <p>{rink.note}</p>
             <p>
+              <p className="image">
+                {rink.image === "" ? (
+                  "No Image To Display"
+                ) : (
+                  <img
+                    style={{ borderRadius: "10px" }}
+                    className="rinkImgs"
+                    src={rink.image}
+                    alt={rink.name}
+                  />
+                )}
+              </p>
               {rink.latitude} {rink.longitude}
             </p>
 

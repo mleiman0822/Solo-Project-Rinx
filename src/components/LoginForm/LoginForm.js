@@ -33,9 +33,21 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form className="formPanel" onSubmit={this.login}>
+      <form
+        style={{
+          backgroundColor: "white",
+          borderRadius: "10px",
+          width: "30%",
+          justifyContent: "center",
+          margin: "0 auto",
+          display: "block",
+          opacity: "0.9",
+        }}
+        className="formPanel"
+        onSubmit={this.login}
+      >
         <h1>Welcome To RINX</h1>
-        <h2>Login</h2>
+        <h6>Ready to Sauce the Biscuit?</h6>
 
         {this.props.store.errors.loginMessage && (
           <h3 className="alert" role="alert">
@@ -76,6 +88,8 @@ class LoginForm extends Component {
           >
             Login
           </Button>
+          <br />
+          <br />
         </div>
       </form>
     );
