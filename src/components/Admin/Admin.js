@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { Modal, Button } from "react-bootstrap";
 import "../App/App.css";
 import { Row, Col } from "react-bootstrap";
+import swal from "sweetalert";
 
 class AdminForm extends Component {
   state = {
@@ -31,6 +32,13 @@ class AdminForm extends Component {
     this.props.dispatch({
       type: "CREATE_RINK",
       payload: this.state,
+    });
+
+    swal({
+      title: "Rink Added To Map",
+      text: "You have successfully added a new rink to the map.",
+      icon: "success",
+      buttons: true,
     });
 
     // clear local state!
