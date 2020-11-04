@@ -33,7 +33,9 @@ class RegisterForm extends Component {
         style={{
           backgroundColor: "white",
           borderRadius: "10px",
-
+          width: "30%",
+          justifyContent: "center",
+          margin: "0 auto",
           display: "block",
           opacity: "0.9",
         }}
