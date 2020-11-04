@@ -25,6 +25,21 @@ function* createRink(action) {
   }
 }
 
+function* editRink() {
+  try {
+    const response = yield axios.put("/api/rinks");
+    // add the upload to the redux store
+    yield put({ type: "SET_RINKS", payload: response.data });
+  } catch (error) {
+    // dispatch an error that the upload was rejected
+    yield put({
+      type: "SET_ALERT",
+      payload: { message: "Error retrieving rinks", alert: "alert-error" },
+    });
+    console.log("Error getting rinks from server:", error);
+  }
+}
+
 // Refresh the global list of uploads from the database
 function* fetchRink() {
   try {
@@ -44,6 +59,7 @@ function* fetchRink() {
 function* rinkSaga() {
   yield takeLatest("CREATE_RINK", createRink);
   yield takeLatest("FETCH_RINKS", fetchRink);
+  yield takeLatest("EDIT_RINK", editRink);
 }
 
 export default rinkSaga;

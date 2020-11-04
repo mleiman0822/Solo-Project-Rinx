@@ -7,6 +7,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import MapIcon from "@material-ui/icons/Map";
 import Tooltip from "@material-ui/core/Tooltip";
+import swal from "sweetalert";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -26,12 +27,12 @@ export class MapMarker extends Component {
     );
   };
 
+  editRink = () => {};
+
   handleShowDialog = () => {
     this.setState({ isOpen: !this.state.isOpen });
     console.log("cliked");
   };
-
-  moveToCenter = () => {};
 
   handlePopUp = () => {
     this.props.moveMap(
@@ -160,6 +161,13 @@ export class MapMarker extends Component {
               <Button
                 color="default"
                 onClick={() => {
+                  swal({
+                    title: "Added To Favorites",
+                    text:
+                      "The rink you have chosen has been successfully added to your favorites view.",
+                    icon: "success",
+                    buttons: true,
+                  });
                   this.setState({ setOpen: true });
                   this.props.dispatch({
                     type: "ADD_FAVORITE",

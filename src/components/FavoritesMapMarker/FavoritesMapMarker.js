@@ -6,6 +6,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import MapIcon from "@material-ui/icons/Map";
 import Tooltip from "@material-ui/core/Tooltip";
+import swal from "sweetalert";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -144,6 +145,13 @@ export class MapMarker extends Component {
               <Button
                 color="secondary"
                 onClick={() => {
+                  swal({
+                    title: "Removed From Favorites",
+                    text:
+                      "The rink you have chosen has been successfully removed from your favorites view.",
+                    icon: "warning",
+                    buttons: true,
+                  });
                   this.setState({ setOpen: true });
                   this.props.dispatch({
                     type: "DELETE_FAVORITE",
