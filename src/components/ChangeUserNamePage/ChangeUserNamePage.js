@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import swal from "sweetalert";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "react-bootstrap";
+import "../App/App.css";
 
 export class ChangeUserNamePage extends Component {
   state = {
@@ -39,9 +40,20 @@ export class ChangeUserNamePage extends Component {
   };
   render() {
     return (
-      <div>
+      <div
+        style={{
+          backgroundColor: "white",
+          borderRadius: "10px",
+          width: "30%",
+          justifyContent: "center",
+          margin: "0 auto",
+          display: "block",
+          opacity: "0.8",
+        }}
+      >
         <Grid item className="welcomeSection">
           <h1 id="welcome">Greetings, {this.props.user.username}!</h1>
+          <br />
 
           {this.state.showInput ? (
             <>
@@ -54,36 +66,45 @@ export class ChangeUserNamePage extends Component {
                   this.setState({ username: event.target.value });
                 }}
               />
-              {""}
-              <Button
-                variant="danger"
-                onClick={this.editUsername}
-                className="usernameButton"
-              >
-                Update
-              </Button>
-              {""}
+              <br />
+              <br />
 
-              <Button
-                variant="secondary"
-                onClick={() =>
-                  this.setState({ showInput: false, username: "" })
-                }
-                className="usernameCancelButton"
-              >
-                Cancel
-              </Button>
+              {""}
+              <span>
+                <Button
+                  variant="danger"
+                  onClick={this.editUsername}
+                  className="usernameButtons"
+                >
+                  Update
+                </Button>
+                <br />
+                {""}
+
+                <Button
+                  variant="secondary"
+                  onClick={() =>
+                    this.setState({ showInput: false, username: "" })
+                  }
+                  className="usernameButtons"
+                >
+                  Cancel
+                </Button>
+              </span>
+              <br />
+              <br />
             </>
           ) : (
             <>
-              <br />
               <Button
-                variant="warning"
+                variant="danger"
                 onClick={() => this.setState({ showInput: true })}
                 className="usernameButton"
               >
                 Update Username
               </Button>
+              <br />
+              <br />
             </>
           )}
         </Grid>

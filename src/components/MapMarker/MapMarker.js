@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, FlyToInterpolator } from "react-map-gl";
 import "./MapMarker.css";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
@@ -14,6 +14,7 @@ export class MapMarker extends Component {
   state = {
     popUp: false,
     setOpen: false,
+    isOpen: false,
   };
 
   showInMapClicked = () => {
@@ -25,7 +26,18 @@ export class MapMarker extends Component {
     );
   };
 
+  handleShowDialog = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+    console.log("cliked");
+  };
+
+  moveToCenter = () => {};
+
   handlePopUp = () => {
+    this.props.moveMap(
+      Number(this.props.rink.latitude) + 0.05,
+      Number(this.props.rink.longitude)
+    );
     this.setState({ popUp: true });
   };
 
@@ -37,6 +49,7 @@ export class MapMarker extends Component {
 
   render() {
     const rink = this.props.rink;
+
     return (
       <>
         {rink.status === 3 ? (
@@ -45,6 +58,8 @@ export class MapMarker extends Component {
             key={rink.id}
             latitude={Number(rink.latitude)}
             longitude={Number(rink.longitude)}
+            offsetLeft={-15}
+            offsetTop={-32}
           >
             <div className="map-marker">
               <img
@@ -61,6 +76,8 @@ export class MapMarker extends Component {
             key={rink.id}
             latitude={Number(rink.latitude)}
             longitude={Number(rink.longitude)}
+            offsetLeft={-15}
+            offsetTop={-32}
           >
             <div className="map-marker">
               <img
@@ -77,6 +94,8 @@ export class MapMarker extends Component {
             key={rink.id}
             latitude={Number(rink.latitude)}
             longitude={Number(rink.longitude)}
+            offsetLeft={-15}
+            offsetTop={-32}
           >
             <div className="map-marker">
               <img
@@ -98,7 +117,8 @@ export class MapMarker extends Component {
             onClose={this.closePopUp}
             closeButton={true}
             closeOnClick={false}
-            offsetTop={-30}
+            offsetLeft={-3}
+            offsetTop={-18}
           >
             <h4>{rink.name}</h4>
             <h5>{rink.address}</h5>
@@ -121,10 +141,11 @@ export class MapMarker extends Component {
                   "No Image To Display"
                 ) : (
                   <img
-                    style={{ borderRadius: "10px" }}
+                    style={{ borderRadius: "10px", cursor: "pointer" }}
                     className="rinkImgs"
                     src={rink.image}
                     alt={rink.name}
+                    onClick={this.handleShowDialog}
                   />
                 )}
               </p>

@@ -7,16 +7,16 @@
   border-radius: 15px;
 }
 .mapboxgl-popup {
-  transform: none;
-  top: 15%;
-  left: 10px;
+  /*   transform: none;
+ */ /*   top: 15%;
+  left: 10px; */
   border-radius: 5px;
 
-  overflow-y: scroll;
-  overflow-x: scroll;
+  /*   overflow-y: scroll;
+  overflow-x: scroll; */
   background-color: rgb(177, 176, 176);
-  top: 9%;
-  left: 13px;
+  /*   top: 9%;
+  left: 13px; */
   z-index: 1;
 }
 

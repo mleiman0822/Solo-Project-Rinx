@@ -32,6 +32,17 @@ class Map extends Component {
   openPopup = (index) => {
     this.setSelectedMarker(index);
   };
+
+  moveMap = (latitude, longitude) => {
+    this.setState({
+      viewport: {
+        ...this.state.viewport,
+        latitude: latitude,
+        longitude: longitude,
+      },
+    });
+  };
+
   render() {
     console.log(this.props);
     return (
@@ -44,14 +55,16 @@ class Map extends Component {
           mapStyle="mapbox://styles/mleiman0822/ckgnxe6ei2mpb1aljxskabiuw"
           // this is from the react-map-gl examples. It updates our local state with
           // whatever the new map viewport is, after a user zooms or pans
-          onViewportChange={(viewport) => this.setState({ viewport })}
+          onViewportChange={(viewport) => {
+            this.setState({ viewport: viewport });
+          }}
         >
           {this.props.rinks.map((rink) => (
             // Offset is required because images are drawn on the map at the top left corner...
             // but marker pins need to have their bottom 'point' on the location (so they need to
 
             // get shifted to the left and up! Depends on the size of the marker)
-            <MapMarker rink={rink} />
+            <MapMarker rink={rink} moveMap={this.moveMap} />
           ))}
         </ReactMapGL>
       </div>

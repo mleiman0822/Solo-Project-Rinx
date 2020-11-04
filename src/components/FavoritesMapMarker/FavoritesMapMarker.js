@@ -45,6 +45,8 @@ export class MapMarker extends Component {
             key={favorite.id}
             latitude={Number(favorite.latitude)}
             longitude={Number(favorite.longitude)}
+            offsetLeft={-15}
+            offsetTop={-32}
           >
             <div className="map-marker">
               <img
@@ -61,6 +63,8 @@ export class MapMarker extends Component {
             key={favorite.id}
             latitude={Number(favorite.latitude)}
             longitude={Number(favorite.longitude)}
+            offsetLeft={-15}
+            offsetTop={-32}
           >
             <div className="map-marker">
               <img
@@ -77,6 +81,8 @@ export class MapMarker extends Component {
             key={favorite.id}
             latitude={Number(favorite.latitude)}
             longitude={Number(favorite.longitude)}
+            offsetLeft={-15}
+            offsetTop={-32}
           >
             <div className="map-marker">
               <img
@@ -96,7 +102,8 @@ export class MapMarker extends Component {
             onClose={this.closePopUp}
             closeButton={true}
             closeOnClick={false}
-            offsetTop={-30}
+            offsetLeft={-3}
+            offsetTop={-18}
           >
             <h4>{favorite.name}</h4>
             <h5>{favorite.address}</h5>
@@ -113,6 +120,22 @@ export class MapMarker extends Component {
             </h6>
 
             <p>{favorite.note}</p>
+            <p>
+              <p className="image">
+                {favorite.image === "" ? (
+                  "No Image To Display"
+                ) : (
+                  <img
+                    style={{ borderRadius: "10px", cursor: "pointer" }}
+                    className="rinkImgs"
+                    src={favorite.image}
+                    alt={favorite.name}
+                    onClick={this.handleShowDialog}
+                  />
+                )}
+              </p>
+              {favorite.latitude} {favorite.longitude}
+            </p>
             <ButtonGroup
               variant="contained"
               color="primary"
