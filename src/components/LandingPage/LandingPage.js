@@ -20,7 +20,7 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="container">
-        <h2>{this.state.heading}</h2>
+        <h2 style={{ color: "white" }}>{this.state.heading}</h2>
 
         <div className="grid">
           <div className="grid-col grid-col_8">
@@ -28,8 +28,8 @@ class LandingPage extends Component {
           </div>
           <div className="grid-col grid-col_4">
             <RegisterForm />
-
-            <h4>Already a Member?</h4>
+            <br />
+            <h4 style={{ color: "white" }}>Already a Member?</h4>
             <Button className="btn btn_sizeSm" onClick={this.onLogin}>
               Login
             </Button>
