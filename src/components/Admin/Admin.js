@@ -8,6 +8,10 @@ import { Modal, Button } from "react-bootstrap";
 import "../App/App.css";
 import { Row, Col } from "react-bootstrap";
 import swal from "sweetalert";
+import ReactWeather from "react-open-weather";
+import "react-open-weather/lib/css/ReactWeather.css";
+import MapMarker from "../MapMarker/MapMarker";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 class AdminForm extends Component {
   state = {
@@ -22,6 +26,37 @@ class AdminForm extends Component {
     zoom: 10,
     showPopup: true,
     isOpen: false,
+    viewport: {
+      width: "100%",
+      height: "100%",
+      latitude: 46.877186, // Fargo, ND
+      longitude: -96.789803,
+      zoom: 10,
+      showPopup: true,
+      selectedRink: null,
+      setSelectedRink: null,
+      setSelectedMarker: null,
+    },
+  };
+
+  setSelectedMarker = (index) => {
+    this.setState({ selectedIndex: index });
+  };
+  closePopup = () => {
+    this.setSelectedMarker(null);
+  };
+  openPopup = (index) => {
+    this.setSelectedMarker(index);
+  };
+
+  moveMap = (latitude, longitude) => {
+    this.setState({
+      viewport: {
+        ...this.state.viewport,
+        latitude: latitude,
+        longitude: longitude,
+      },
+    });
   };
 
   onSubmit = (event) => {
@@ -60,7 +95,28 @@ class AdminForm extends Component {
   render = () => {
     return (
       <>
-        <RinkMap />
+        <div className="map-container">
+          <ReactMapGL
+            style={{ borderRadius: "45px" }}
+            {...this.state.viewport}
+            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            // mapStyle="mapbox://styles/mapbox/dark-v9"
+            mapStyle="mapbox://styles/mleiman0822/ckgnxe6ei2mpb1aljxskabiuw"
+            // this is from the react-map-gl examples. It updates our local state with
+            // whatever the new map viewport is, after a user zooms or pans
+            onViewportChange={(viewport) => {
+              this.setState({ viewport: viewport });
+            }}
+          >
+            {this.props.rinks.map((rink) => (
+              // Offset is required because images are drawn on the map at the top left corner...
+              // but marker pins need to have their bottom 'point' on the location (so they need to
+
+              // get shifted to the left and up! Depends on the size of the marker)
+              <MapMarker rink={rink} moveMap={this.moveMap} />
+            ))}
+          </ReactMapGL>
+        </div>
         <br />
         <div>
           <Button variant="primary" onClick={this.openModal}>
@@ -219,4 +275,8 @@ class AdminForm extends Component {
   };
 }
 
-export default connect()(AdminForm);
+const mapStateToProps = (state) => ({
+  state: state,
+  rinks: state.rinkItemsReducer.rinks,
+});
+export default connect(mapStateToProps)(AdminForm);

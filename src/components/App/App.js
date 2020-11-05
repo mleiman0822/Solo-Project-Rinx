@@ -20,8 +20,8 @@ import RegisterPage from "../RegisterPage/RegisterPage";
 import RinkMap from "../RinkMap/RinkMap";
 import FavoriteRinks from "../FavoriteRinks/FavoriteRinks";
 import Admin from "../Admin/Admin";
-import ReactWeather from "react-open-weather";
 import "react-open-weather/lib/css/ReactWeather.css";
+import axios from "axios";
 
 import "./App.css";
 import ChangeUserNamePage from "../ChangeUserNamePage/ChangeUserNamePage";
@@ -36,11 +36,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"
-            type="text/css"
-          />
           <div className="app">
             <Nav />
             <br />
@@ -124,6 +119,7 @@ class App extends Component {
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
             </Switch>
+
             <Footer />
           </div>
         </div>

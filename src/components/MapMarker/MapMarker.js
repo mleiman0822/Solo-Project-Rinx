@@ -9,6 +9,8 @@ import MapIcon from "@material-ui/icons/Map";
 import Tooltip from "@material-ui/core/Tooltip";
 import swal from "sweetalert";
 import ModalImage from "react-modal-image";
+import EditIcon from "@material-ui/icons/Edit";
+import mapStoreToProps from "../../redux/mapStoreToProps";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -51,6 +53,10 @@ export class MapMarker extends Component {
 
   render() {
     const rink = this.props.rink;
+
+    let loginLinkData = {
+      path: "/login",
+    };
 
     return (
       <>
@@ -109,7 +115,6 @@ export class MapMarker extends Component {
             </div>
           </Marker>
         )}
-
         {this.state.popUp !== false ? (
           <Popup
             style={{ borderRadius: "15px" }}
@@ -155,6 +160,7 @@ export class MapMarker extends Component {
             </p>
 
             <ButtonGroup
+              href={loginLinkData.path}
               variant="contained"
               color="primary"
               aria-label="contained primary button group"
@@ -185,6 +191,14 @@ export class MapMarker extends Component {
                   <MapIcon></MapIcon>
                 </Tooltip>
               </Button>
+
+              {this.props.user.is_admin && (
+                <Button>
+                  <Tooltip title="Edit Rink">
+                    <EditIcon></EditIcon>
+                  </Tooltip>
+                </Button>
+              )}
             </ButtonGroup>
           </Popup>
         ) : (
@@ -199,4 +213,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(MapMarker);
+export default connect(mapStateToProps, mapStoreToProps)(MapMarker);
