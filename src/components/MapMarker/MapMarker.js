@@ -165,8 +165,7 @@ export class MapMarker extends Component {
                 onClick={() => {
                   swal({
                     title: "Added To Favorites",
-                    text:
-                      "The rink you have chosen has been successfully added to your favorites view.",
+                    text: `${rink.name} has been successfully added to your favorites view.`,
                     icon: "success",
                     buttons: true,
                   });

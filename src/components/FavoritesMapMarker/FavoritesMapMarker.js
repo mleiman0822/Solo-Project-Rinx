@@ -147,8 +147,7 @@ export class MapMarker extends Component {
                 onClick={() => {
                   swal({
                     title: "Removed From Favorites",
-                    text:
-                      "The rink you have chosen has been successfully removed from your favorites view.",
+                    text: `${favorite.name} has been successfully removed from your favorites view.`,
                     icon: "warning",
                     buttons: true,
                   });
