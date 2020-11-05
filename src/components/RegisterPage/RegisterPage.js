@@ -14,14 +14,14 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div style={{ margin: "auto", padding: "10px" }}>
+      <div>
         <RegisterForm />
         <br />
         <br />
         <center>
           <h2 style={{ color: "white" }}>Already a Member? Log in!</h2>
           <Button
-            variant="secondary"
+            variant="primary"
             type="button"
             className="btn btn_asLink"
             onClick={() => {

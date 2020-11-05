@@ -74,7 +74,7 @@ class RegisterForm extends Component {
         </div>
         <div>
           <Button
-            variant="primary"
+            variant="secondary"
             className="btn"
             type="submit"
             name="submit"

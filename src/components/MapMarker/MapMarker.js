@@ -8,6 +8,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import MapIcon from "@material-ui/icons/Map";
 import Tooltip from "@material-ui/core/Tooltip";
 import swal from "sweetalert";
+import ModalImage from "react-modal-image";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 

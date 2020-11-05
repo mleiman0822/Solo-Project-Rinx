@@ -32,9 +32,12 @@ const Nav = (props) => {
               <NavLink className="nav-link" href="#favorites">
                 Favorites
               </NavLink>
-              <NavLink className="nav-link" href="#admin">
-                Admin
-              </NavLink>
+
+              {props.store.user.is_admin && (
+                <NavLink className="nav-link" href="#admin">
+                  Admin
+                </NavLink>
+              )}
             </>
           )}
         </NavLink>
