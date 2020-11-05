@@ -22,6 +22,7 @@ import FavoriteRinks from "../FavoriteRinks/FavoriteRinks";
 import Admin from "../Admin/Admin";
 import "react-open-weather/lib/css/ReactWeather.css";
 import axios from "axios";
+import WeatherRender from "../WeatherRender/WeatherRender";
 
 import "./App.css";
 import ChangeUserNamePage from "../ChangeUserNamePage/ChangeUserNamePage";
@@ -76,6 +77,13 @@ class App extends Component {
                 exact
                 path="/admin"
                 component={Admin}
+              />
+
+              <ProtectedRoute
+                // logged in shows UserPage else shows LoginPage
+                exact
+                path="/weather"
+                component={WeatherRender}
               />
 
               {/* When a value is supplied for the authRedirect prop the user will

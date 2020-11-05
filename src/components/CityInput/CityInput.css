@@ -1,0 +1,7 @@
+.loading {
+  background-color: whitesmoke;
+  background-image: url("/Users/matthew/Documents/SOLO_PROJECT_RINX/solo-project-rinx/src/images/loading.gif");
+  background-size: 25px 25px;
+  background-position: 95% center;
+  background-repeat: no-repeat;
+}
