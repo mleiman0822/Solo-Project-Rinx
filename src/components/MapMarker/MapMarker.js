@@ -11,6 +11,7 @@ import swal from "sweetalert";
 import ModalImage from "react-modal-image";
 import EditIcon from "@material-ui/icons/Edit";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+import { Link } from "react-router-dom";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -39,7 +40,7 @@ export class MapMarker extends Component {
 
   handlePopUp = () => {
     this.props.moveMap(
-      Number(this.props.rink.latitude) + 0.05,
+      Number(this.props.rink.latitude),
       Number(this.props.rink.longitude)
     );
     this.setState({ popUp: true });
@@ -53,10 +54,6 @@ export class MapMarker extends Component {
 
   render() {
     const rink = this.props.rink;
-
-    let loginLinkData = {
-      path: "/login",
-    };
 
     return (
       <>
@@ -160,7 +157,6 @@ export class MapMarker extends Component {
             </p>
 
             <ButtonGroup
-              href={loginLinkData.path}
               variant="contained"
               color="primary"
               aria-label="contained primary button group"
@@ -193,11 +189,16 @@ export class MapMarker extends Component {
               </Button>
 
               {this.props.user.is_admin && (
-                <Button>
-                  <Tooltip title="Edit Rink">
-                    <EditIcon></EditIcon>
-                  </Tooltip>
-                </Button>
+                <Link
+                  to="/rinkedits
+                "
+                >
+                  <Button color="secondary">
+                    <Tooltip title="Edit Rink">
+                      <EditIcon></EditIcon>
+                    </Tooltip>
+                  </Button>
+                </Link>
               )}
             </ButtonGroup>
           </Popup>

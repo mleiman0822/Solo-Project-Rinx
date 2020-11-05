@@ -39,16 +39,20 @@ class AdminForm extends Component {
     },
   };
 
+  //setting marker
   setSelectedMarker = (index) => {
     this.setState({ selectedIndex: index });
   };
+  //close popup handle
   closePopup = () => {
     this.setSelectedMarker(null);
   };
+  //open popup handle
   openPopup = (index) => {
     this.setSelectedMarker(index);
   };
 
+  //moving map handle
   moveMap = (latitude, longitude) => {
     this.setState({
       viewport: {
@@ -59,6 +63,7 @@ class AdminForm extends Component {
     });
   };
 
+  //form submit to create rink
   onSubmit = (event) => {
     event.preventDefault();
     this.closeModal();
@@ -89,6 +94,7 @@ class AdminForm extends Component {
     });
   };
 
+  //open and closing modals
   openModal = () => this.setState({ isOpen: true });
   closeModal = () => this.setState({ isOpen: false });
 

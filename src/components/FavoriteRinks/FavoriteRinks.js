@@ -8,6 +8,7 @@ import "../RinkMap/RinkMap.css";
 // Grab some nice markers from:
 // https://github.com/pointhi/leaflet-color-markers/tree/master/img
 
+//favorite rinks page eand map has different view
 class Map extends Component {
   state = {
     viewport: {

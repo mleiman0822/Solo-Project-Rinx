@@ -12,6 +12,7 @@ export class ChangeUserNamePage extends Component {
     showInput: false,
   };
 
+  //edit user name function with popup
   editUsername = () => {
     swal({
       title: "Are you sure?",
@@ -38,6 +39,8 @@ export class ChangeUserNamePage extends Component {
       }
     });
   };
+
+  //edit username form
   render() {
     return (
       <div

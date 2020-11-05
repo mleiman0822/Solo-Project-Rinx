@@ -4,6 +4,8 @@ import user from "./user.reducer";
 import login from "./login_reducer";
 import rinkItemsReducer from "./rink_items_reducer";
 import favoriteReducer from "./favorites.reducer";
+import editClickReducer from "./admin.reducer";
+import userReducer from "./user.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +19,8 @@ const rootReducer = combineReducers({
   login, // login or register as a user.
   rinkItemsReducer,
   favoriteReducer,
+  editClickReducer,
+  userReducer,
 });
 
 export default rootReducer;
