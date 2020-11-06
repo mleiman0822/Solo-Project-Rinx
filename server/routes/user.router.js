@@ -30,7 +30,7 @@ router.post("/register", (req, res, next) => {
     .catch(() => res.sendStatus(500));
 });
 
-router.put(`/:id`, (req, res) => {
+router.put(`/:id`, rejectUnauthenticated, (req, res) => {
   const newName = req.body.username;
   const userId = req.params.id;
   // setting query text to update the username
