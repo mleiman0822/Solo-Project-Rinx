@@ -10,7 +10,7 @@ In the future I am planning to:
 
 Make it mobile friendly
 
-Add more features beneficial to users to make their experieince better
+Add more features
 
 # Technologies
 
